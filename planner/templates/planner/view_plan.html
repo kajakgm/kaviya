@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Floor Plan</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>{{ plan.plan_name }}</h1>
+        <p>Created on: {{ plan.created_at }}</p>
+        
+        <h3>Floor Plan Layout</h3>
+        <pre>{{ plan.layout_data }}</pre> <!-- Display room layout data (JSON or other formats) -->
+
+        <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</body>
+</html>

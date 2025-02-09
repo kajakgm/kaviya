@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Full-Width Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">Home Planner</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto"> <!-- Aligns links to the right -->
+                    <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <h1>Welcome to the Home Planner</h1>
+        <p>Plan your dream home by adding rooms and generating 2D floor plans.</p>
+
+        <br>
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="btn btn-primary mt-3">Go to Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary mt-3">Login</a>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

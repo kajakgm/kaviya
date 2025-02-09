@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Home Plan</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { width: 80%; margin: auto; padding: 20px; }
+        img { border: 2px solid black; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generated 2D Home Plan</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <label>Length (ft):</label>
+            <input type="number" name="length" required>
+            <label>Width (ft):</label>
+            <input type="number" name="width" required>
+            <button type="submit">Generate Plan</button>
+        </form>
+        
+        {% if plan_image %}
+            <p>Generated Plan:</p>
+            <img src="data:image/png;base64,{{ plan_image }}" alt="Generated Home Plan">
+        {% endif %}
+    </div>
+</body>
+</html>

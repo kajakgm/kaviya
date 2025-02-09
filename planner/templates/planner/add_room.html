@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Room</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Add Room Details</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Generate Plan</button>
+        </form>
+
+        <div class="mt-5">
+            <h3>Your Floor Plan</h3>
+            <svg id="floor-plan" width="500" height="500" style="border: 1px solid black;">
+                <!-- Dynamically generated floor plan will appear here -->
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Example script to render a room in SVG
+        var svg = document.getElementById('floor-plan');
+        var room = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        room.setAttribute("x", 50);
+        room.setAttribute("y", 50);
+        room.setAttribute("width", 200);
+        room.setAttribute("height", 150);
+        room.setAttribute("fill", "lightblue");
+        svg.appendChild(room);
+    </script>
+</body>
+</html>

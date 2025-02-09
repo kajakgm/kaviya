@@ -1,0 +1,34 @@
+<!-- planner/templates/planner/design.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Design</title>
+</head>
+<body>
+    <h1>Generated Home Design</h1>
+
+    <!-- Display the 2D design (this can be an SVG, canvas, or any visual representation) -->
+    <div>
+        <h3>Design Preview</h3>
+        <svg width="500" height="500">
+            <!-- Example: Render room sizes dynamically (replace with actual design logic) -->
+            <rect x="10" y="10" width="100" height="100" fill="blue" />
+            <text x="15" y="25">Room 1</text>
+        </svg>
+    </div>
+
+    <!-- Display the materials fetched from the API -->
+    <div>
+        <h3>Building Materials</h3>
+        <ul>
+            {% for material in materials %}
+                <li>{{ material.name }} - {{ material.price }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{% url 'home_planner' %}">Back to Home Planner</a>
+</body>
+</html>

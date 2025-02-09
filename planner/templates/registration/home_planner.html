@@ -1,0 +1,29 @@
+<!-- planner/templates/planner/home_planner.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Planner</title>
+</head>
+<body>
+    <h1>Home Planner</h1>
+
+    <!-- Display the HomePlanForm -->
+    <h2>Home Plan</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ home_plan_form.as_p }}  <!-- Renders HomePlanForm fields -->
+        <button type="submit">Submit Home Plan</button>
+    </form>
+
+    <!-- Display the RoomForm -->
+    <h2>Room Details</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ room_form.as_p }}  <!-- Renders RoomForm fields -->
+        <button type="submit">Submit Room Details</button>
+    </form>
+
+</body>
+</html>

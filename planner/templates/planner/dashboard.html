@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .floor-plan-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .room {
+            stroke: black;
+            stroke-width: 2;
+            fill-opacity: 0.5;
+        }
+        .text-label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>Here are your saved floor plans:</p>
+        <ul>
+            {% for plan in floor_plans %}
+                <li><a href="{% url 'view_plan' plan.id %}">{{ plan.plan_name }}</a></li>
+            {% empty %}
+                <li>No saved plans yet.</li>
+            {% endfor %}
+        </ul>
+
+        <br>
+        
+        <br><br>
+
+        <!-- Form to input dimensions -->
+        <h3>Generate New 2D Plan</h3>
+        <form method="post" action="{% url 'generate_2d_plan' %}" class="mb-4">
+            {% csrf_token %}
+            <label>Length (ft):</label>
+            <input type="number" name="length" required class="form-control mb-2">
+            
+            <label>Width (ft):</label>
+            <input type="number" name="width" required class="form-control mb-2">
+
+            <button type="submit" class="btn btn-success">Generate Plan</button>
+        </form>
+
+        <!-- Display Generated 2D Plan -->
+       {% if plan_image %}
+    <p>Plan Image URL: {{ plan_image }}</p>
+    <img src="{{ plan_image }}" alt="Generated Floor Plan" style="border: 1px solid #ddd; max-width: 100%;">
+{% else %}
+    <p>No floor plan generated yet.</p>
+{% endif %}
+
+
+        <!-- Logout Button -->
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-secondary">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
